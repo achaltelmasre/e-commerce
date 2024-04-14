@@ -84,6 +84,105 @@ app.post("/login", async (req, res ) =>{
     }
 });
 
+//get /product
+app.get("/products", async (req, res) => {
+    const Products = await Product.find();
+ 
+    res.json({
+     success:true,
+     data: Products,
+     message: "Products fetched successfully"
+    });
+ });
+
+ //post /product
+ app.post("/product", async (req, res) => {
+    const {
+        name,
+        description,
+        price,
+        image,
+        category,
+        brand,
+    } = req.body;
+
+    const product = new Product({
+        name:name,
+        description: description,
+        price: price,
+        image: image,
+        category: category,
+        brand: brand,
+    });
+
+    try{
+        const savedProduct = await product.save();
+
+        res.json({
+            success: true,
+            data: savedProduct,
+            message: "Product created successfully"
+        });
+    }
+    catch(e)
+    {
+       res.json({
+        success: false,
+        message: e.message
+       });
+    }
+});
+
+//get /product/:id
+app.get("/product/:id", async (req, res) => {
+    const {id} = req.params;
+ 
+    const product = await Product.findById(id);
+ 
+    res.json({
+     success: true,
+     data: product,
+     message: "Product fetched successfully"
+    });
+ });
+
+ //put /product/:id
+ app.put("/product/:id", async (req, res) => {
+    const {id} = req.params;
+  
+    const { name, description, price, image, category, brand, } = req.body;
+  
+      await Product.updateOne({_id: id}, {$set : {
+       name: name,
+       description: description,
+       price: price,
+       image: image,
+       category: category,
+       brand: brand,
+    }});
+  
+    const updatedProduct = await Product.findById(id);
+  
+     res.json({
+      success: true,
+      data: updatedProduct,
+      message: "Product update successfully"
+     }); 
+  });
+
+  //post /product/search?query
+  app.get("/products/search", async (req, res) => {
+    const {q} = req.query;
+
+    const products = await Product.find({name: {$regex: q, $options: "i"}});
+
+    res.json({
+        success: true,
+        data: products,
+        message: "Product fetched successfully"
+    });
+  });
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
