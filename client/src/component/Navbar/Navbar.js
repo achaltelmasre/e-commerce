@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import "./Navbar.css";
 
 function Navbar() {
@@ -37,12 +37,12 @@ function Navbar() {
                 </Link>
               </li>
               <li class="nav-item ms-5">
-                <Link  to="/addtransaction" class="nav-link active" aria-current="page" href="#">
+                <Link  to="/order" class="nav-link active" aria-current="page" href="#">
                     Order
                 </Link>
               </li>
               <li class="nav-item ms-5">
-                <Link  to="/showtransaction" class="nav-link active" aria-current="page" >
+                <Link  to="/signup" class="nav-link active" aria-current="page" >
                     Signup
                 </Link>
               </li>
@@ -51,11 +51,7 @@ function Navbar() {
                      Login
                 </Link>
               </li>
-              <li class="nav-item ms-5">
-                <Link  to="/signup" class="nav-link active" aria-current="page" >
-                    Signup
-                </Link>
-              </li>
+             
 
             </ul>
               <div className="hello-user fs-5 me-5">

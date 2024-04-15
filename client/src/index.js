@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import Home from "./views/Home/Home";
-import Signup from "./views/Signup/Signup";
-import Login from "./views/Login/Login";
-import Order from "./views/Order/Order";
-import Buypage from "./views/Buypage/Buypage";
+import Home from "./views/Home/Home.js";
+import Signup from "./views/Signup/Signup.js";
+import Login from "./views/Login/Login.js";
+import Order from "./views/Order/Order.js";
+import Buypage from "./views/Buypage/Buypage.js";
 import './index.css';
 
 
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
         element:<Login/>
     },
     {
-        path:'/orders',
+        path:'/order',
         element:<Order/>
     },
     {
