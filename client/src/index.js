@@ -5,8 +5,11 @@ import Signup from "./views/Signup/Signup";
 import Login from "./views/Login/Login";
 import Order from "./views/Order/Order";
 import Buypage from "./views/Buypage/Buypage";
-
 import './index.css';
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const router = createBrowserRouter([
     {
