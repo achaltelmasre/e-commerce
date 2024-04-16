@@ -1,3 +1,9 @@
+/* .signup{
+    background-color: rgb(192, 192, 246);
+     height: 100vh;
+    
+} */
+
 .gender{
     margin-left: 20px;
 }
@@ -5,6 +11,14 @@
    display: block;
    margin: 0 auto;
    margin-bottom: 10px;
-   background-color: rgb(255, 240, 23);;
+   background-color: #dc3545;
    color: white;
+   border-radius: 20px;
+   padding: 5px;
+   border: none;
+   font-size: 20px;
+}
+.signup-btn:hover{
+  
+    box-shadow: 0 0 10px 5px rgb(248, 215, 28);
 }

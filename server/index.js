@@ -17,7 +17,7 @@ const connectDB = async () => {
 };
 
 //post /singup
-app.post("/signup1", async (req, res) => {
+app.post("/signup", async (req, res) => {
     const {
         name,
         email,
@@ -86,7 +86,7 @@ app.post("/login", async (req, res ) =>{
 
 //get /product
 app.get("/products", async (req, res) => {
-    const Products = await Product.find();
+    const Products = await Products.find();
  
     res.json({
      success:true,
@@ -306,9 +306,6 @@ app.get("/orders", async(req, res) => {
       message: "Orders fetched successfully"
     });
   });
-  
-
-
 
 const PORT = process.env.PORT || 5000;
 
