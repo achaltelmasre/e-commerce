@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../component/Navbar/Navbar";
+
 import './Login.css';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import showToast from 'crunchy-toast';
 
 function Login (){
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const login = async () => {
 
         const response = await axios.post("/login", {
 
-            username:username,
+            email:email,
             password:password
         })
 
@@ -29,14 +29,14 @@ function Login (){
             alert(response?.data?.message);
             window.location.href = "./";
         }
+
     }
 
     useEffect(() => {
         const storageUser = JSON.parse(localStorage.getItem("user") || '{}')
         
         if (storageUser?.email) {
-            showToast('You are already logged in!', 'warning', 4000);
-            
+            alert("You are already logged in!");
             window.location.href = "/";
         }
 
@@ -46,20 +46,20 @@ function Login (){
       
         <div className="login">
               <Navbar/>
-            <form className="main-container mt-5">
-                <h2 className="text-center p-2">Login</h2>
+            <form className="main-container">
+                <h1 className="text-center">Login</h1>
 
                 <div>
-            <lable htmlFor='username'>Username :-</lable>
-            <input type='username' 
-              placeholder="Enter your username" 
-              id='username' value={username}
-              className="input-form"    
-              onChange={(e) => {setUsername(e.target.value)}}/>
+            <lable htmlFor='email'>Email:</lable>
+            <input type='email' 
+              placeholder="Enter your email" 
+              id='email' value={email}
+              className="input-form"
+              onChange={(e) => {setEmail(e.target.value)}}/>
            </div>
 
            <div>
-            <lable htmlFor='password'>Password :-</lable>
+            <lable htmlFor='password'>Password:</lable>
             <input type='password' 
               placeholder="Enter your password" 
               id='password' value={password}
@@ -67,12 +67,12 @@ function Login (){
               onChange={(e) => {setPassword(e.target.value)}}/>
            </div>
 
-           <button type="button" className="button ms-5 "
+           <button type="button" className="ps-5 pe-5 mt-5 signup-btn"
               onClick={login}
            > Login </button>
           
           <p className="text-center">
-          <Link to="../signup" className="address-link" >Create new Account 👈</Link>
+          <Link to="../signup" className="address-link" >Create new Account</Link>
 
           </p>
            
