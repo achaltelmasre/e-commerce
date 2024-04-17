@@ -96,40 +96,30 @@ app.get("/products", async (req, res) => {
  });
 
  //post /product
- app.post("/product", async (req, res) => {
-    const {
-        name,
-        description,
-        price,
-        image,
-        category,
-        brand,
-    } = req.body;
+ app.post('/product', async (req, res) => {
+    const { name, description, price, image, category, brand } = req.body;
 
     const product = new Product({
-        name:name,
+        name: name,
         description: description,
         price: price,
         image: image,
         category: category,
-        brand: brand,
+        brand: brand
     });
-
-    try{
-        const savedProduct = await product.save();
-
+    try {
+        const saveProduct = await product.save();
         res.json({
             success: true,
-            data: savedProduct,
-            message: "Product created successfully"
-        });
+            data: saveProduct,
+            message: "Successfully added new product"
+        })
     }
-    catch(e)
-    {
-       res.json({
-        success: false,
-        message: e.message
-       });
+    catch (e) {
+        res.json({
+            success: false,
+            message: e.message
+        })
     }
 });
 
